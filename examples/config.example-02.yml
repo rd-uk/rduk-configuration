@@ -1,0 +1,7 @@
+---
+connections:
+fakeSectionElement:
+    default: sample
+    providers:
+        -sample:
+            type: FakeProvider
