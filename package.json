@@ -1,7 +1,7 @@
 {
   "name": "rduk-configuration",
   "version": "0.1.0",
-  "description": "Manage configuration in Node.js projects",
+  "description": "Manage configuration in your Node.js app",
   "main": "lib/manager.js",
   "scripts": {
     "lint": "jshint lib/**/*.js",
