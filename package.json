@@ -9,12 +9,20 @@
     "test": "istanbul cover jasmine",
     "posttest": "rm ./config*.yml && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rd-uk/rduk-configuration.git"
+  },
   "keywords": [
     "configuration",
     "manager"
   ],
   "author": "Kim UNG",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rd-uk/rduk-configuration/issues"
+  },
+  "homepage": "https://github.com/rd-uk/rduk-configurationr#readme",
   "devDependencies": {
     "coveralls": "2.11.14",
     "istanbul": "0.4.5",
@@ -22,6 +30,7 @@
     "jshint": "2.9.4"
   },
   "dependencies": {
+    "js-yaml": "3.7.0",
     "lodash": "4.16.4",
     "rduk-errors": "^1.0.0"
   }
