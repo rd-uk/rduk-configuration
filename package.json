@@ -1,6 +1,6 @@
 {
   "name": "rduk-configuration",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Manage configuration in your Node.js app",
   "main": "lib/manager.js",
   "scripts": {
