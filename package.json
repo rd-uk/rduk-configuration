@@ -24,14 +24,14 @@
   },
   "homepage": "https://github.com/rd-uk/rduk-configurationr#readme",
   "devDependencies": {
-    "coveralls": "2.11.14",
+    "coveralls": "2.11.15",
     "istanbul": "0.4.5",
     "jasmine": "2.5.2",
     "jshint": "2.9.4"
   },
   "dependencies": {
     "js-yaml": "3.7.0",
-    "lodash": "4.16.4",
+    "lodash": "4.17.2",
     "rduk-errors": "^1.0.0"
   }
 }
