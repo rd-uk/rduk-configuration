@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "js-yaml": "3.7.0",
-    "lodash": "4.17.2",
+    "lodash": "4.17.3",
     "rduk-errors": "^1.0.0"
   }
 }
