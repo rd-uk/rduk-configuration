@@ -135,7 +135,7 @@
                     it('should be con1', function() {
                         expect(manager.connections).toBeDefined();
                         expect(manager.connections.get()).toBe(manager.connections.get('con1'));
-                    })
+                    });
                 });
 
                 describe('con2', function() {
@@ -172,7 +172,7 @@
 
                     expect(fakeSection).toBeDefined();
                 });
-            })
+            });
         });
 
     });
