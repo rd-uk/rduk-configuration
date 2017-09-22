@@ -1,3 +1,5 @@
 ---
 settings:
     configFile: 'default (without env)'
+    value1: 'base'
+    value2: 'base'

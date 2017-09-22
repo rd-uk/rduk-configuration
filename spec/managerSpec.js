@@ -53,6 +53,8 @@
             
             it('should load config.development.yml', function() {
                 expect(manager.settings.get('configFile')).toBe('development');
+                expect(manager.settings.get('value1')).toBe('base');
+                expect(manager.settings.get('value2')).toBe('override');
             });
         });
 

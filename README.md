@@ -38,6 +38,23 @@ If you set `NODE_ENV`, you can access the configuration according to it
 ```js
 myConfig = configuration.load(); //will load config.dev.yml if NODE_ENV === dev
 ```
+
+__Note:__
+
+If you prefer put your config file within another folder, you can do so by adding 
+in the `package.json` of your solution a configuration section.
+
+```json
+# example of package.json
+{
+    ...
+    "rduk": {
+        "config": {
+            "path": "path/to/config"
+        }
+    }
+}
+```
 ___
 
 # Reference
