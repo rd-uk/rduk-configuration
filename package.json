@@ -1,13 +1,13 @@
 {
   "name": "rduk-configuration",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Manage configuration in your Node.js app",
   "main": "lib/manager.js",
   "scripts": {
-    "lint": "jshint **/*.js",
-    "pretest": "npm run lint && mkdir config && cp ./examples/*.yml ./config",
+    "lint": "jshint lib/*.js",
+    "pretest": "npm run lint && cp ./examples/*.yml .",
     "test": "istanbul cover node_modules/jasmine/bin/jasmine.js --report cobertura",
-    "posttest": "rm -rf ./config && istanbul report && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+    "posttest": "rm -rf ./config*yml && istanbul report && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "repository": {
     "type": "git",
@@ -32,11 +32,6 @@
   "dependencies": {
     "js-yaml": "3.8.3",
     "lodash": "4.17.3",
-    "rduk-errors": "^1.0.0"
-  },
-  "rduk": {
-    "config": {
-      "path": "config"
-    }
+    "rduk-errors": "1.2.3"
   }
 }
