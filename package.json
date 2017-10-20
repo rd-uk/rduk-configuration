@@ -30,6 +30,7 @@
     "jshint": "2.9.5"
   },
   "dependencies": {
+    "extend": "3.0.1",
     "js-yaml": "3.8.3",
     "lodash": "4.17.3",
     "rduk-errors": "1.2.3"
