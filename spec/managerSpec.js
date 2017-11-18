@@ -49,12 +49,14 @@
 
         describe('loading with NODE_ENV === development', function() {
             process.env.NODE_ENV = 'development';
+            process.env.TEST = 'it works';
             var manager = factory.load();
             
             it('should load config.development.yml', function() {
                 expect(manager.settings.get('configFile')).toBe('development');
                 expect(manager.settings.get('value1')).toBe('base');
                 expect(manager.settings.get('value2')).toBe('override');
+                expect(manager.settings.get('replace')).toBe('it works');
             });
         });
 
