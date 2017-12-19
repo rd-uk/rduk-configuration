@@ -1,7 +1,7 @@
 /**
  * MIT License
  *
- * Copyright (c) 2016 Kim UNG
+ * Copyright (c) 2016 - 2017 RDUK <tech@rduk.fr>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -170,7 +170,7 @@
 
             describe('get section "fakeSectionElement" without type', function() {
                 it('should return the raw section', function() {
-                    var fakeSection = manager.getSection("fakeSectionElement");
+                    var fakeSection = manager.getSection('fakeSectionElement');
 
                     expect(fakeSection).toBeDefined();
                 });

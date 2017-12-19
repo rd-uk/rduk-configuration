@@ -1,11 +1,11 @@
 {
-  "name": "rduk-configuration",
-  "version": "1.2.0",
+  "name": "@rduk/configuration",
+  "version": "2.0.0",
   "description": "Manage configuration in your Node.js app",
   "main": "lib/manager.js",
   "scripts": {
     "lint": "jshint lib/*.js",
-    "pretest": "npm run lint && cp ./examples/*.yml .",
+    "pretest": "npm run lint && cp ./spec/resources/config*.yml .",
     "test": "istanbul cover node_modules/jasmine/bin/jasmine.js --report cobertura",
     "posttest": "rm -rf ./config*yml && istanbul report && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
@@ -17,7 +17,7 @@
     "configuration",
     "manager"
   ],
-  "author": "Kim UNG <k.ung@rduk.fr>",
+  "author": "RDUK <tech@rduk.fr>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/rd-uk/rduk-configuration/issues"
