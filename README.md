@@ -8,7 +8,7 @@ Manage your Node.js app configuration
 ## Installation
 
 ```
-npm install rduk-configuration --save --save-exact
+npm install @rduk/configuration --save --save-exact
 ```
 
 ## Naming
@@ -17,7 +17,7 @@ Add the configuration file at the root of your project.
 You have to name it according to the argument passed to the factory.
 
 ```js
-var configuration = require('rduk-configuration');
+var configuration = require('@rduk/configuration');
 
 var myConfig;
 
@@ -165,3 +165,9 @@ var map = myConfig.getSection('map', MapSection);
 __Note:__
 
 If no type passed to the method, get the raw section.
+
+___
+
+# License and copyright
+
+See [LICENSE](LICENSE)
