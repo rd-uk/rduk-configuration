@@ -1,11 +1,28 @@
-# 1.1.0
-## 12/11/2017
+# Changelog
+All notable changes to this project will be documented in this file.
 
-1. [](#feature-1.1.0)
-    - add type field initialization
+The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
+and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-# 1.0.1
-## 10/08/2017
+## 2.0.2 - 2017-12-22
+### Added
+- tests
 
-1. [](#bugfix-1.0.1)
-    - #12 : fixed an issue where the absence of root config path overriding causes a "File not exists error"
+### Changed
+- update README
+- change rduk-errors by @rduk/errors
+- refactor manager
+
+## 2.0.0
+### Changed
+- package rename
+
+[](#feature-1.1.0)
+## 1.1.0 - 2017-11-12
+### Added
+- add type field initialization
+
+[](#bugfix-1.0.1)
+## 1.0.1 - 2017-08-10
+### Changed
+- #12 : fixed an issue where the absence of root config path overriding causes a "File not exists error"

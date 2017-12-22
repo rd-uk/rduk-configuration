@@ -1,0 +1,6 @@
+---
+settings:
+    configFile: 'development'
+    value2: 'override'
+    replace: ${TEST}
+    replace2: ${TEST2}

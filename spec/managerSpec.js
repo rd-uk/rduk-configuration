@@ -22,15 +22,15 @@
  * SOFTWARE.
  */
 
-(function(require, process, describe, expect, it) {
+'use strict';
 
-    'use strict';
+const errors = require('@rduk/errors');
+const factory = require('../lib/index');
 
-    var errors = require('rduk-errors');
-    var factory = require('../lib/manager');
+describe('config', function() {
 
-    describe('config', function() {
-
+    describe('in root', function() {
+        
         describe('initialized with invalid env', function() {
             it('should throw an ArgumentError', function() {
                 expect(function() {
@@ -40,8 +40,12 @@
         });
 
         describe('without env', function() {
-            var manager = factory();
-            
+            let manager;
+
+            beforeEach(function() {
+                manager = factory();
+            });
+
             it('should load config.yml', function() {
                 expect(manager.settings.get('configFile')).toBe('default (without env)');
             });
@@ -50,8 +54,9 @@
         describe('loading with NODE_ENV === development', function() {
             process.env.NODE_ENV = 'development';
             process.env.TEST = 'it works';
-            var manager = factory.load();
-            
+            let manager;
+            manager = factory.load();
+
             it('should load config.development.yml', function() {
                 expect(manager.settings.get('configFile')).toBe('development');
                 expect(manager.settings.get('value1')).toBe('base');
@@ -60,8 +65,22 @@
             });
         });
 
+    });
+
+    describe('in env example-01', function() {
+
+        let manager;
+
+        beforeEach(function() {
+            manager = factory('example-01');
+            spyOn(manager, 'getPackageConfig').and.returnValue({
+                prefix: 'config',
+                ext: '.yml',
+                path: 'config'
+            });
+        });
+
         describe('getSection', function() {
-            var manager = factory();
 
             describe('called without name', function() {
                 it('should throw an ArgumentNullError', function() {
@@ -97,86 +116,98 @@
 
         });
 
-        describe('example-01', function() {
-            var manager = factory('example-01');
-            
-            describe('settings', function() {
-                describe('invalid key', function() {
-                    it('should throw an ArgumentError', function() {
-                        expect(function() {
-                            manager.settings.get();
-                        }).toThrowError(errors.ArgumentError);
-
-                        expect(function() {
-                            manager.settings.get({});
-                        }).toThrowError(errors.ArgumentError);
-                    });
-                });
-
-                describe('facebook key', function() {
-                    it('should be defined', function() {
-                        var facebook = manager.settings.get('facebook');
-                        
-                        expect(facebook).toBeDefined();
-                        expect(facebook.appId).toBe('APP_ID');
-                        expect(facebook.appSecret).toBe('APP_SECRET');
-                    });
-                });
-
-                describe('unknown key', function() {
-                    it('should throw a ConfigurationError', function() {
-                        expect(function() {
-                            manager.settings.get('twitter');
-                        }).toThrowError(errors.ConfigurationError);
-                    });
-                });
-            });
-
-            describe('connections', function() {
-                describe('default', function() {
-                    it('should be con1', function() {
-                        expect(manager.connections).toBeDefined();
-                        expect(manager.connections.get()).toBe(manager.connections.get('con1'));
-                    });
-                });
-
-                describe('con2', function() {
-                    it('should be defined', function() {
-                        expect(manager.connections.get('con2')).toBeDefined();
-                        expect(manager.connections.get('con2').provider).toBe('pg');
-                    });
-                });
-
-                describe('con3', function() {
-                    it('should throw a ConfigurationError', function() {
-                        expect(function() {
-                            manager.connections.get('con3');
-                        }).toThrowError(errors.ConfigurationError);
-                    });
-                });
-            });
-        });
-
-        describe('example-02', function() {
-            var manager = factory('example-02');
-
-            describe('default connection', function() {
+        describe('settings', function() {
+            describe('invalid key', function() {
                 it('should throw an ArgumentError', function() {
                     expect(function() {
-                        manager.connections.get();
+                        manager.settings.get();
+                    }).toThrowError(errors.ArgumentError);
+
+                    expect(function() {
+                        manager.settings.get({});
                     }).toThrowError(errors.ArgumentError);
                 });
             });
 
-            describe('get section "fakeSectionElement" without type', function() {
-                it('should return the raw section', function() {
-                    var fakeSection = manager.getSection('fakeSectionElement');
+            describe('facebook key', function() {
+                it('should be defined', function() {
+                    let facebook = manager.settings.get('facebook');
 
-                    expect(fakeSection).toBeDefined();
+                    expect(facebook).toBeDefined();
+                    expect(facebook.appId).toBe('APP_ID');
+                    expect(facebook.appSecret).toBe('APP_SECRET');
+                });
+            });
+
+            describe('unknown key', function() {
+                it('should throw a ConfigurationError', function() {
+                    expect(function() {
+                        manager.settings.get('twitter');
+                    }).toThrowError(errors.ConfigurationError);
+                });
+            });
+        });
+
+        describe('connections', function() {
+            describe('default', function() {
+                it('should be con1', function() {
+                    expect(manager.connections).toBeDefined();
+                    expect(manager.connections.get()).toBe(manager.connections.get('con1'));
+                });
+            });
+
+            describe('con2', function() {
+                it('should be defined', function() {
+                    expect(manager.connections.get('con2')).toBeDefined();
+                    expect(manager.connections.get('con2').provider).toBe('pg');
+                });
+            });
+
+            describe('con3', function() {
+                it('should throw a ConfigurationError', function() {
+                    expect(function() {
+                        manager.connections.get('con3');
+                    }).toThrowError(errors.ConfigurationError);
                 });
             });
         });
 
     });
 
-} (require, process, describe, expect, it));
+    describe('example-02', function() {
+        let manager;
+
+        beforeEach(function() {
+            manager = factory('example-02');
+            spyOn(manager, 'getPackageConfig').and.returnValue({
+                prefix: 'config',
+                ext: '.yml',
+                path: 'config'
+            });
+        });
+
+        describe('default connection', function() {
+            it('should throw an ArgumentError', function() {
+                expect(function() {
+                    manager.connections.get();
+                }).toThrowError(errors.ArgumentError);
+            });
+        });
+
+        describe('get section "fakeSectionElement" without type', function() {
+            it('should return the raw section', function() {
+                let fakeSection = manager.getSection('fakeSectionElement');
+
+                expect(fakeSection).toBeDefined();
+            });
+        });
+
+        describe('get not configurated optional section', function() {
+            it('should return null', function() {
+                let section = manager.getSection('unknown', null, true);
+                expect(section).toBe(null);
+            });
+        });
+    });
+
+});

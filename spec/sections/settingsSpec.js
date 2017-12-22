@@ -22,23 +22,19 @@
  * SOFTWARE.
  */
 
-(function(require, describe, expect, it) {
+'use strict';
 
-    'use strict';
+const errors = require('@rduk/errors');
+const Settings = require('../../lib/sections/settings');
 
-    var errors = require('rduk-errors');
-    var Settings = require('../../lib/sections/settings');
+describe('Settings instantiation without a valid section', function() {
+    it('should throw an ArgumentError', function() {
+        expect(function() {
+            new Settings();
+        }).toThrowError(errors.ArgumentError);
 
-    describe('Settings instantiation without a valid section', function() {
-        it('should throw an ArgumentError', function() {
-            expect(function() {
-                new Settings();
-            }).toThrowError(errors.ArgumentError);
-
-            expect(function() {
-                new Settings('shouldn\'t be a string');
-            }).toThrowError(errors.ArgumentError);
-        });
+        expect(function() {
+            new Settings('shouldn\'t be a string');
+        }).toThrowError(errors.ArgumentError);
     });
-
-} (require, describe, expect, it));
+});
