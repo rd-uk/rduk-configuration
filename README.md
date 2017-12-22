@@ -4,6 +4,7 @@ Manage your Node.js app configuration
 
 [![Build Status](https://travis-ci.org/rd-uk/rduk-configuration.svg?branch=master)](https://travis-ci.org/rd-uk/rduk-configuration)
 [![Coverage Status](https://coveralls.io/repos/github/rd-uk/rduk-configuration/badge.svg?branch=master)](https://coveralls.io/github/rd-uk/rduk-configuration?branch=master)
+[![bitHound Overall Score](https://www.bithound.io/github/rd-uk/rduk-configuration/badges/score.svg)](https://www.bithound.io/github/rd-uk/rduk-configuration)
 
 ## Installation
 
