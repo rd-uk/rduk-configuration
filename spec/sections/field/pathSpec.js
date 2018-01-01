@@ -24,11 +24,33 @@
 
 'use strict';
 
-var errors = require('@rduk/errors');
-var path = require('./path');
+const errors = require('@rduk/errors');
 
-module.exports = {
-    load: function(filepath) {
-        return require(path.resolve(filepath));
-    }
-};
+describe('path', function() {
+
+    let path = require('../../../lib/sections/field/path');
+
+    describe('resolve', function() {
+
+        describe('called with a invalid parameter', function() {
+            it('should throw an ArgumentError', function() {
+                expect(function() {
+                    path.resolve();
+                }).toThrowError(errors.ArgumentError);
+
+                expect(function() {
+                    path.resolve({});
+                }).toThrowError(errors.ArgumentError);
+            });
+        });
+
+        describe('called with path === /test', function() {
+            it('should return /test', function() {
+                expect(path.resolve('/test')).toBeDefined();
+                expect(path.resolve('/test')).toBe('/test');
+            });
+        });
+
+    });
+
+});
