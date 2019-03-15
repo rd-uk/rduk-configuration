@@ -46,16 +46,24 @@ If you prefer put your config file within another folder, you can do so by addin
 in the `package.json` of your solution a rduk configuration section.
 
 ```json
-# example of package.json
+# example of package.json (path/to/config/app.yaml)
 {
     ...
     "rduk": {
         "config": {
-            "path": "path/to/config"
+            "path": "path/to/config", # (default: PWD)
+            "ext": ".yaml", # (default: .yml)
+            "prefix": "app" # (default: config)
         }
     }
 }
 ```
+
+or use `RDUK_CONFIG_*` environment variables as follow :
+- RDUK_CONFIG_PATH=path/to/config
+- RDUK_CONFIG_EXT=.yaml
+- RDUK_CONFIG_PREFIX=app
+
 ___
 
 # Reference
